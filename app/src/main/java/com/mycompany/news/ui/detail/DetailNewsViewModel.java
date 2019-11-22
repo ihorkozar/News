@@ -35,4 +35,8 @@ public class DetailNewsViewModel extends ViewModel {
             disposable.dispose();
         }
     }
+
+    public MutableLiveData<Article> getDetailArticle() {
+        return detailArticle;
+    }
 }

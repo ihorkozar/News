@@ -20,14 +20,14 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:contentDescription="@string/content_description"
-            />
+            app:ImageUrl="@{viewModel.detailArticle.urlToImage}"/>
         <TextView
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/detail_image"
             android:layout_toRightOf="@id/detail_image"
-            />
+            android:text="@{viewModel.detailArticle.author}"/>
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
