@@ -12,17 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import com.mycompany.news.data.Storage;
 import com.mycompany.news.databinding.NewsBinding;
+import com.mycompany.news.ui.detail.DetailNewsActivity;
+import com.mycompany.news.ui.detail.DetailNewsFragment;
 import com.mycompany.news.utils.CustomFactory;
 
 public class NewsFragment extends Fragment {
     private NewsViewModel newsViewModel;
 
-    private NewsAdapter.OnItemClickListener onItemClickListener = () -> {
-        /*Intent intent = new Intent(getActivity(), DetailNewsActivity.class);
+    private NewsAdapter.OnItemClickListener onItemClickListener = key -> {
+        Intent intent = new Intent(getActivity(), DetailNewsActivity.class);
         Bundle args = new Bundle();
-        args.putString(DetailNewsFragment.DETAIL_NEWS_KEY, username);
+        args.putString(DetailNewsFragment.DETAIL_NEWS_KEY, key);
         intent.putExtra(DetailNewsActivity.USERNAME_KEY, args);
-        startActivity(intent);*/
+        startActivity(intent);
     };
 
     public static NewsFragment newInstance() {

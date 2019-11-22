@@ -13,10 +13,11 @@ import com.mycompany.news.databinding.DetailNewsBinding;
 
 public class DetailNewsFragment extends Fragment {
 
-    public static final String PROFILE_KEY = "PROFILE_KEY";
+    public static final String DETAIL_NEWS_KEY = "DETAIL_NEWS_KEY";
 
     private DetailNewsViewModel detailNewsViewModel;
     private Storage storage;
+    private String key;
 
     public static DetailNewsFragment newInstance(Bundle args) {
         DetailNewsFragment fragment = new DetailNewsFragment();
@@ -28,8 +29,10 @@ public class DetailNewsFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         storage = context instanceof Storage.StorageOwner ? ((Storage.StorageOwner) context).obtainStorage() : null;
-
-        detailNewsViewModel = new DetailNewsViewModel(storage);
+        if (getArguments() != null) {
+            key = getArguments().getString(DETAIL_NEWS_KEY);
+        }
+        detailNewsViewModel = new DetailNewsViewModel(storage, key);
     }
 
     @Nullable

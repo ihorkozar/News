@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data class="DetailNewsBinding">
         <variable
             name="viewModel"
@@ -12,27 +14,41 @@
         android:layout_marginTop="8dp">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/detail_image"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:contentDescription="@string/content_description"/>
+            android:contentDescription="@string/content_description"
+            />
         <TextView
+            android:id="@+id/tv_author"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/detail_image"
+            android:layout_toRightOf="@id/detail_image"
+            />
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:layout_alignLeft="@id/tv_author"
+            android:layout_alignStart="@id/tv_author"
+            android:layout_below="@id/tv_author"/>
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/tv_description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_alignStart="@id/tv_title"
+            android:layout_below="@id/tv_title"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_below="@+id/image">
+            android:layout_below="@+id/detail_image">
             <WebView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

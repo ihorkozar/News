@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="@{() -> onItemClickListener.onItemClick()}">
+        android:onClick="@{() -> onItemClickListener.onItemClick(viewModel.url)}">
 
         <ImageView
             android:id="@+id/image"
@@ -38,12 +38,12 @@
             android:text="@{viewModel.title}"
             android:layout_alignLeft="@id/tv_author"
             android:layout_alignStart="@id/tv_author"
-            android:layout_below="@id/tv_author"/>
+            android:layout_below="@id/tv_author"
+            android:maxLines="2"/>
         <TextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.description}"
             android:layout_alignLeft="@id/tv_title"
             android:layout_alignStart="@id/tv_title"
             android:layout_below="@id/tv_title"/>

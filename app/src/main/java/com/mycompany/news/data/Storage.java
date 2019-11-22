@@ -37,4 +37,9 @@ public class Storage {
     public interface StorageOwner {
         Storage obtainStorage();
     }
+
+    public Single<Article> getArticleById(String key) {
+        Single<Article> article = newsDao.getArticleById(key);
+        return article;
+    }
 }

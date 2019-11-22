@@ -2,18 +2,25 @@ package com.mycompany.news.ui;
 
 import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
-
 import java.util.List;
 
 public class NewsListItemViewModel {
-    private String author, title, description, url, urlToImage, publishedAt, content, name;
+    private String author, title, description, url, urlToImage, publishedAt, content;
+    private String name, id;
+    private int article_id;
+
 
     public NewsListItemViewModel(Article item) {
         author = item.getAuthor();
         title = item.getTitle();
         description = item.getDescription();
         urlToImage = item.getUrlToImage();
-
+        url = item.getUrl();
+        publishedAt = item.getPublishedAt();
+        content = item.getContent();
+        name = item.getSource().getName();
+        id = item.getSource().getId();
+        article_id = item.getArticle_id();
     }
 
 
@@ -49,4 +56,11 @@ public class NewsListItemViewModel {
         return name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getArticle_id() {
+        return article_id;
+    }
 }

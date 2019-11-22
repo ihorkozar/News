@@ -49,6 +49,6 @@ public class NewsAdapter extends PagedListAdapter<Article, NewsHolder> {
     };
 
     public interface OnItemClickListener {
-        void onItemClick();
+        void onItemClick(String key);
     }
 }

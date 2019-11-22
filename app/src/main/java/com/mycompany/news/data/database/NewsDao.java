@@ -29,5 +29,8 @@ public interface NewsDao {
     @Query("select * from article")
     DataSource.Factory<Integer, Article> getArticlePaged();
 
+    @Query("select * from article where url = :key")
+    Single<Article> getArticleById(String key);
+
 
 }

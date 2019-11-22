@@ -1,5 +1,6 @@
 package com.mycompany.news.data.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -13,7 +14,6 @@ import java.util.List;
 @Entity
 public class Article implements Serializable {
 
-    @PrimaryKey
     @ColumnInfo(name = "article_id")
     private int article_id;
 
@@ -33,8 +33,10 @@ public class Article implements Serializable {
     @SerializedName("description")
     private String description;
 
+    @PrimaryKey
     @ColumnInfo(name = "url")
     @SerializedName("url")
+    @NonNull
     private String url;
 
     @ColumnInfo(name = "urlToImage")
