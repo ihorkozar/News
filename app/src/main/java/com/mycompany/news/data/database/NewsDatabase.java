@@ -7,7 +7,7 @@ import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
 import com.mycompany.news.data.model.Source;
 
-@Database(entities = {News.class, Article.class, Source.class}, version = 1)
+@Database(entities = {Article.class, Source.class}, version = 1)
 public abstract class NewsDatabase extends RoomDatabase {
     public abstract NewsDao getNewsDao();
 }

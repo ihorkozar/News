@@ -22,7 +22,7 @@
                 android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                bind:data="@{viewModel.news}"
+                bind:data="@{viewModel.articles}"
                 android:visibility="@{viewModel.isErrorVisible ? View.GONE : View.VISIBLE}"
                 bind:clickHandler="@{viewModel.onItemClickListener}"/>
 

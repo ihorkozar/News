@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
 import com.mycompany.news.ui.NewsAdapter;
 
@@ -33,10 +34,10 @@ public class CustomBindingAdapter {
 
     @BindingAdapter({"bind:data", "bind:clickHandler"})
     public static void configureRecyclerView(RecyclerView recyclerView,
-                                             PagedList<News> news,
+                                             PagedList<Article> articles,
                                              NewsAdapter.OnItemClickListener listener){
         NewsAdapter adapter = new NewsAdapter(listener);
-        adapter.submitList(news);
+        adapter.submitList(articles);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setAdapter(adapter);
     }

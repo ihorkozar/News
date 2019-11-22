@@ -18,24 +18,23 @@ public class Storage {
         this.newsDao = newsDao;
     }
 
-    public void insertNews(News news){
-        newsDao.insertNews(news);
+    public void insertArticles(News response) {
+        insertArticles(response.getArticles());
     }
 
-    public LiveData<PagedList<News>> getNewsPaged(){
-        return new LivePagedListBuilder<>(newsDao.getNewsPaged(), PAGE_SIZE).build();
+    public void insertArticles(List<Article> articles){
+        newsDao.insertArticles(articles);
     }
 
-    public LiveData<News> getLiveNews(){
-        return newsDao.getLiveNews();
+    public LiveData<List<Article>> getArticleLive(){
+        return newsDao.getLiveArticle();
+    }
+
+    public LiveData<PagedList<Article>> getNewsPaged(){
+        return new LivePagedListBuilder<>(newsDao.getArticlePaged(), PAGE_SIZE).build();
     }
 
     public interface StorageOwner {
         Storage obtainStorage();
     }
-
-    /*public Single<Article> getArticle(int id) {
-        Single<Article> article = newsDao.getArticleById(id);
-        return article;
-    }*/
 }

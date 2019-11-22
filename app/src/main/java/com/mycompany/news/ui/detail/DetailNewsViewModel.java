@@ -1,4 +1,4 @@
-package com.mycompany.news.ui;
+package com.mycompany.news.ui.detail;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

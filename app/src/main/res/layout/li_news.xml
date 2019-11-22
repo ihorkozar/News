@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data class="NewsListBinding">
         <variable
-            name="news"
+            name="viewModel"
             type="com.mycompany.news.ui.NewsListItemViewModel" />
         <variable
             name="onItemClickListener"
@@ -13,24 +14,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="@{()->onItemClickListener.onItemClick()}">
+        android:onClick="@{() -> onItemClickListener.onItemClick()}">
 
         <ImageView
+            android:id="@+id/image"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:contentDescription="@string/content_description"/>
+            android:contentDescription="@string/content_description"
+            app:ImageUrl="@{viewModel.urlToImage}"/>
         <TextView
+            android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{news.status}"/>
+            android:text="@{viewModel.author}"
+            android:layout_toEndOf="@id/image"
+            android:layout_toRightOf="@id/image"/>
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.title}"
+            android:layout_alignLeft="@id/tv_author"
+            android:layout_alignStart="@id/tv_author"
+            android:layout_below="@id/tv_author"/>
         <TextView
+            android:id="@+id/tv_description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.description}"
+            android:layout_alignLeft="@id/tv_title"
+            android:layout_alignStart="@id/tv_title"
+            android:layout_below="@id/tv_title"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/image"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary" />
+
 
     </RelativeLayout>
 

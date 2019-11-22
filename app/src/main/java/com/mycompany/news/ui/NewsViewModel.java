@@ -8,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.mycompany.news.BuildConfig;
 import com.mycompany.news.data.Storage;
+import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
 import com.mycompany.news.utils.ApiUtils;
 
@@ -20,28 +21,29 @@ public class NewsViewModel extends ViewModel {
     private NewsAdapter.OnItemClickListener onItemClickListener;
     private MutableLiveData<Boolean> isErrorVisible = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
-    private LiveData<PagedList<News>> news;
-    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = () -> updateNews();
+    private LiveData<PagedList<Article>> articles;
+    private SwipeRefreshLayout.OnRefreshListener onRefreshListener = () -> updateArticles();
 
     public NewsViewModel(Storage storage, NewsAdapter.OnItemClickListener onItemClickListener) {
         this.storage = storage;
         this.onItemClickListener = onItemClickListener;
-        news = storage.getNewsPaged();
-        updateNews();
+        updateArticles();
+        articles = storage.getNewsPaged();
     }
 
-    private void updateNews(){
-        String country = "ua";
+    private void updateArticles(){
+        String country = "us";
         disposable = ApiUtils.getApiService()
                 .getTopHeadlinesNews(country, BuildConfig.API_KEY)
+                .map(News::getArticles)
                 .doOnSuccess(response -> isErrorVisible.postValue(false))
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(disposable -> isLoading.postValue(true))
                 .doFinally(() -> isLoading.postValue(false))
                 .subscribe(
-                        response -> storage.insertNews(response),
+                        response -> storage.insertArticles(response),
                         throwable -> {
-                            boolean value = news.getValue()==null || news.getValue().size()==0;
+                            boolean value = articles.getValue()==null || articles.getValue().size()==0;
                             isErrorVisible.postValue(value);
                         });
     }
@@ -66,8 +68,8 @@ public class NewsViewModel extends ViewModel {
         return isLoading;
     }
 
-    public LiveData<PagedList<News>> getNews() {
-        return news;
+    public LiveData<PagedList<Article>> getArticles() {
+        return articles;
     }
 
     public SwipeRefreshLayout.OnRefreshListener getOnRefreshListener() {

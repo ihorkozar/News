@@ -1,4 +1,4 @@
-package com.mycompany.news.ui;
+package com.mycompany.news.ui.detail;
 
 import android.content.Context;
 import android.os.Bundle;

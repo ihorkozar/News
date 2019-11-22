@@ -6,10 +6,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
+import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
 import com.mycompany.news.databinding.NewsListBinding;
 
-public class NewsAdapter extends PagedListAdapter<News, NewsHolder> {
+public class NewsAdapter extends PagedListAdapter<Article, NewsHolder> {
 
     private final OnItemClickListener onItemClickListener;
 
@@ -28,21 +29,21 @@ public class NewsAdapter extends PagedListAdapter<News, NewsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsHolder holder, int position) {
-        News news = getItem(position);
-        if (news != null){
-            holder.bind(news, onItemClickListener);
+        Article article = getItem(position);
+        if (article != null){
+            holder.bind(article, onItemClickListener);
         }
     }
 
-    private static final DiffUtil.ItemCallback<News> CALLBACK = new DiffUtil.ItemCallback<News>() {
+    private static final DiffUtil.ItemCallback<Article> CALLBACK = new DiffUtil.ItemCallback<Article>() {
         @Override
-        public boolean areItemsTheSame(News oldItem, News newItem) {
-            return oldItem.getNewsId() == newItem.getNewsId();
+        public boolean areItemsTheSame(Article oldItem, Article newItem) {
+            return oldItem.getArticle_id() == newItem.getArticle_id();
         }
 
         @SuppressLint("DiffUtilEquals")
         @Override
-        public boolean areContentsTheSame(News oldItem, News newItem) {
+        public boolean areContentsTheSame(Article oldItem, Article newItem) {
             return oldItem.equals(newItem);
         }
     };

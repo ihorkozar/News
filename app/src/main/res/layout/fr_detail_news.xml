@@ -3,7 +3,7 @@
     <data class="DetailNewsBinding">
         <variable
             name="viewModel"
-            type="com.mycompany.news.ui.DetailNewsViewModel" />
+            type="com.mycompany.news.ui.detail.DetailNewsViewModel" />
     </data>
 
     <RelativeLayout

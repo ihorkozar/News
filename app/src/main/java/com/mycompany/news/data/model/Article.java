@@ -120,8 +120,4 @@ public class Article implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public Article() {
-
-    }
 }

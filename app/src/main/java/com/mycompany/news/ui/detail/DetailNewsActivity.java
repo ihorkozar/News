@@ -1,4 +1,4 @@
-package com.mycompany.news.ui;
+package com.mycompany.news.ui.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

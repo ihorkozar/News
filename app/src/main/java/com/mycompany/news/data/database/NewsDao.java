@@ -16,19 +16,18 @@ import io.reactivex.Single;
 
 @Dao
 public interface NewsDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertNews(News news);
+    void insertArticles(List<Article> articles);
 
-    @Query("select * from news")
-    News getNews();
+    @Query("select * from article")
+    List<Article> getNews();
 
-    @Query("select * from news")
-    LiveData<News> getLiveNews();
+    @Query("select * from article order by publishedAt desc")
+    LiveData<List<Article>> getLiveArticle();
 
-    @Query("select * from news")
-    DataSource.Factory<Integer, News> getNewsPaged();
+    @Query("select * from article")
+    DataSource.Factory<Integer, Article> getArticlePaged();
 
-    /*@Query("select * from article where id = :articleId")
-    Single<Article> getArticleById(int articleId);*/
 
 }
