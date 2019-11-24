@@ -81,16 +81,6 @@
                                 android:textColor="@color/colorAccent"
                                 android:textStyle="italic" />
 
-                            <TextView
-                                android:id="@+id/tv_publishedAt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_marginLeft="50dp"
-                                android:layout_marginEnd="10dp"
-                                android:text="@{viewModel.detailArticle.publishedAt}"
-                                android:textStyle="italic" />
-
                         </RelativeLayout>
 
                     </RelativeLayout>

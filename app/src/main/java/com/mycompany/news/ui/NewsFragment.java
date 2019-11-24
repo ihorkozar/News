@@ -20,7 +20,7 @@ public class NewsFragment extends Fragment {
     private NewsViewModel newsViewModel;
 
     private NewsAdapter.OnItemClickListener onItemClickListener = key -> {
-        Intent intent = new Intent(getActivity(), DetailNewsActivity.class);
+        Intent intent = new Intent(getContext(), DetailNewsActivity.class);
         Bundle args = new Bundle();
         args.putString(DetailNewsFragment.DETAIL_NEWS_KEY, key);
         intent.putExtra(DetailNewsActivity.USERNAME_KEY, args);

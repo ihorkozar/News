@@ -45,11 +45,6 @@ public class CustomBindingAdapter {
         webView.loadUrl(url);
     }
 
-    /*@BindingAdapter("bind:date")
-    public static void configureDate(TextView textView, String oldDate){
-        textView.setText(DateFormat.DateFormat(oldDate));
-    }*/
-
     @BindingAdapter({"bind:data", "bind:clickHandler"})
     public static void configureRecyclerView(RecyclerView recyclerView,
                                              PagedList<Article> articles,
