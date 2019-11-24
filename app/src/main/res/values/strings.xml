@@ -2,5 +2,6 @@
     <string name="app_name">News</string>
     <string name="error">Something went wrong. Try again.</string>
     <string name="news">News</string>
+    <string name="detail_news">Detail News</string>
     <string name="content_description">Image</string>
 </resources>

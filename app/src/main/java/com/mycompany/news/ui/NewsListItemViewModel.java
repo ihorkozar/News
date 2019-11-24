@@ -2,6 +2,8 @@ package com.mycompany.news.ui;
 
 import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
+import com.mycompany.news.utils.DateFormat;
+
 import java.util.List;
 
 public class NewsListItemViewModel {
@@ -16,7 +18,7 @@ public class NewsListItemViewModel {
         description = item.getDescription();
         urlToImage = item.getUrlToImage();
         url = item.getUrl();
-        publishedAt = item.getPublishedAt();
+        publishedAt = DateFormat.DateFormat(item.getPublishedAt());
         content = item.getContent();
         name = item.getSource().getName();
         id = item.getSource().getId();

@@ -1,9 +1,10 @@
 package com.mycompany.news.utils;
 
+import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 import androidx.databinding.BindingAdapter;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.mycompany.news.R;
 import com.mycompany.news.data.model.Article;
 import com.mycompany.news.data.model.News;
 import com.mycompany.news.ui.NewsAdapter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class CustomBindingAdapter {
     @BindingAdapter("bind:ImageUrl")
@@ -24,6 +30,13 @@ public class CustomBindingAdapter {
                 .into(imageView);
     }
 
+    @BindingAdapter("bind:DetailImageUrl")
+    public static void loadDetailImage(ImageView imageView, String urlImage){
+        Glide.with(imageView.getContext())
+                .load(urlImage)
+                .into(imageView);
+    }
+
     @BindingAdapter("bind:WebView")
     public static void setWebView(WebView webView, String url){
         webView.getSettings().setJavaScriptEnabled(true);
@@ -31,6 +44,11 @@ public class CustomBindingAdapter {
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(url);
     }
+
+    /*@BindingAdapter("bind:date")
+    public static void configureDate(TextView textView, String oldDate){
+        textView.setText(DateFormat.DateFormat(oldDate));
+    }*/
 
     @BindingAdapter({"bind:data", "bind:clickHandler"})
     public static void configureRecyclerView(RecyclerView recyclerView,

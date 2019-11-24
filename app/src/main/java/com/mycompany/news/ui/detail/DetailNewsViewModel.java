@@ -13,7 +13,6 @@ public class DetailNewsViewModel extends ViewModel {
     private Disposable disposable;
     private Storage storage;
     private String key;
-    private MutableLiveData<Boolean> isErrorVisible = new MutableLiveData<>();
     private MutableLiveData<Article> detailArticle = new MutableLiveData<>();
 
     public DetailNewsViewModel(Storage storage, String key) {
