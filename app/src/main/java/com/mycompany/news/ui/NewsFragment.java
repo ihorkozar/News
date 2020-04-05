@@ -19,13 +19,13 @@ import com.mycompany.news.utils.CustomFactory;
 public class NewsFragment extends Fragment {
     private NewsViewModel newsViewModel;
 
-    private NewsAdapter.OnItemClickListener onItemClickListener = key -> {
+    /*private NewsAdapter.OnItemClickListener onItemClickListener = key -> {
         Intent intent = new Intent(getContext(), DetailNewsActivity.class);
         Bundle args = new Bundle();
         args.putString(DetailNewsFragment.DETAIL_NEWS_KEY, key);
         intent.putExtra(DetailNewsActivity.USERNAME_KEY, args);
         startActivity(intent);
-    };
+    };*/
 
     public static NewsFragment newInstance() {
         return new NewsFragment();
@@ -34,6 +34,13 @@ public class NewsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        NewsAdapter.OnItemClickListener onItemClickListener = key -> {
+            Intent intent = new Intent(getContext(), DetailNewsActivity.class);
+            Bundle args = new Bundle();
+            args.putString(DetailNewsFragment.DETAIL_NEWS_KEY, key);
+            intent.putExtra(DetailNewsActivity.USERNAME_KEY, args);
+            startActivity(intent);
+        };
         if (context instanceof Storage.StorageOwner) {
             Storage storage = ((Storage.StorageOwner) context).obtainStorage();
             CustomFactory customFactory = new CustomFactory(storage, onItemClickListener);
